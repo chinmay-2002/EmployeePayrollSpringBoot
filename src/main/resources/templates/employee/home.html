@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="ISO-8859-1">
+<title>Worker Crud APP</title>
+<style>
+.container {
+    border: 1px solid #ccc; /* Border color */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5	); /* Shadow */
+    padding: 20px; /* Adjust padding as needed */
+    /* Other styling properties */
+    background-color: white;
+    margin-top: 10vh;
+}
+body {
+    background-color: lightblue;
+}
+
+</style>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Employee Payroll</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li> 
+        <li class="nav-item">
+          <a class="nav-link" href="signin">LogOut</a>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+<div class="container my-2">
+	
+	
+
+<h2>Welcome, <span th:if="${employee != null}"
+th:text="${employee.name}">Unknown User</span>!</h2>
+<h3>Employee Details:</h3>
+<ul>
+<li><strong>Email:</strong> <span th:if="${employee != null}"
+th:text="${employee.email}"></span></li>
+<li><strong>Salary:</strong> <span th:if="${employee != null}"
+th:text="${employee.salary}"></span></li>
+<li><strong>Designation:</strong> <span th:if="${employee != null}"
+th:text="${employee.designation}"></span></li>
+</ul>
+<h3>Update Employee Information:</h3>
+<form action="#" th:if="${employee != null}" th:action="@{/update}"
+th:object="${employee}" method="post">
+<input type="hidden" th:field="*{id}">
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" th:field="*{name}"
+required><br><br>
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" th:field="*{email}"
+required><br><br>
+<label for="salary">Salary:</label>
+<input type="number" id="salary" name="salary" th:field="*{salary}"
+required><br><br>
+<label for="designation">Designation:</label>
+<input type="text" id="designation" name="designation"
+th:field="*{designation}" required><br><br>
+<button type="submit">Update</button>
+</form>
+
+		
+		
+
+</body>
+</html>
